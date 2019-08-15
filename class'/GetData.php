@@ -2,9 +2,7 @@
 
 class GetData {
 
-    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'lastSeen' => []];
-
-    protected $warDetails = ['name' => [], 'warCollectionBattles' => [], 'warCardsEarned' => [], 'allocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'warFinalBattleWin' => []];
+    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'lastSeen' => [], 'warCollectionBattles' => [], 'warCardsEarned' => [], 'allocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'warFinalBattleWin' => []];
 
     protected $warState;
     protected $warTotalCollectionBattles;
@@ -145,22 +143,24 @@ public function getWarData() {
                     $warEndTime = new DateTime($warEndTimeISO[0]);
                     $this->warEndTime = $warEndTime->format('d/m H:i:s');
                
-
-                    foreach ($warArr['participants'] as $key => $values) {
-
-                        $this->warDetails['name'][] = $values['name'];
-                        $this->warDetails['warCollectionBattles'][] = $values['collectionDayBattlesPlayed'];
-                        $this->warDetails['warCardsEarned'][] = $values['cardsEarned'];
-
-                        $this->warDetails['allocatedFinalBattles'][] = $values['numberOfBattles'];
-                        $this->warDetails['numberOfFinalBattlesPlayed'][] = $values['battlesPlayed'];
-                        $this->warDetails['warFinalBattleWin'][] = $values['wins'];
-
-                    }
+                     //first loop gets the index of playerDetails
+                      for ($i = 0; $i < count($this->playerDetails['name']); $i++) {
+                          //second loop gets the index of warArr
+                          for ($x=0; $x < count($warArr['participants']) ; $x++){
+                                 //if name at $i index = name at $x index set the values in playerDetails at $i index
+                                    if($this->playerDetails['name'][$i] == $warArr['participants'][$x]['name']){
+                                    $this->playerDetails['warCollectionBattles'][$i] = $warArr['participants'][$x]['collectionDayBattlesPlayed'];
+                                    $this->playerDetails['warCardsEarned'][$i] = $warArr['participants'][$x]['cardsEarned'];
+                                    $this->playerDetails['allocatedFinalBattles'][$i] = $warArr['participants'][$x]['numberOfBattles'];
+                                    $this->playerDetails['numberOfFinalBattlesPlayed'][$i] = $warArr['participants'][$x]['battlesPlayed'];
+                                    $this->playerDetails['warFinalBattleWin'][$i] = $warArr['participants'][$x]['wins'];
+                    
+          
+                                    }
+                            }
+                      } 
 
                 }
-                //print_r($warArr);
-                //echo "war state =" . $this->warState . " collection battles ". $this->warTotalCollectionBattles . "WINS " .$this->warTotalCollectionWins . " war participants ". $this->warParticipants . " collection battles ". "final wins =" . $this->warTotalFinalWins . "war final crowns =" . $this->warTotalFinalCrowns . "war total final battles =" . $this->warTotalFinalBattles . "war end time =" . $this->warEndTime ;
                 
 
                 
