@@ -42,9 +42,14 @@ class Calculations extends GetData {
         }
     }
     
-    public function recruitment() {
-        if (count($this->playerDetails['name']) < 50) {
-            echo "We have " . (count($this->playerDetails['name']) - 50) . " places available";
-        }
+   public function recruitment() {
+       /*set places available to 50 minus total players in the clan and determine
+       if the recruitment message is plural or not */
+    	$placesAvailable = (50 - count($this->playerDetails['name']) );
+        	if ($placesAvailable == 1 ) {
+	            echo "We have " . $placesAvailable . " place available";
+        	} else if ($placesAvailable > 1 ) {
+        		echo "We have " . $placesAvailable . " places available";
+        		}
     }
 }
