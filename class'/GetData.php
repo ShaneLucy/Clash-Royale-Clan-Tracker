@@ -267,7 +267,7 @@ curl_close($ch);
 
 }
 
-    public function getWarlog() {
+public function getWarlog() {
     //initialise and set curl opttions for request
     $ch = curl_init();
     $options = array(
@@ -275,7 +275,7 @@ curl_close($ch);
         CURLOPT_RETURNTRANSFER => 1,
         CURLOPT_HTTPHEADER => array(
             'Accept: application/json',
-            $this - > jwt
+            $this -> jwt
         )
     );
 
@@ -297,14 +297,14 @@ curl_close($ch);
 
                 for ($x = 0; $x < 10; $x++) {
 
-                    $this - > warLog['createdOn'][$x] = $warLog['items'][$x]['createdDate'];
+                    $this -> warLog['createdOn'][$x] = $warLog['items'][$x]['createdDate'];
                     for ($i = 0; $i < count($warLog['items'][$x]['participants']); $i++) {
 
-                        $this - > warLog['warLog'][$x]['name'][$i] = $warLog['items'][$x]['participants'][$i]['name'];
-                        $this - > warLog['warLog'][$x]['cardsEarned'][$i] = $warLog['items'][$x]['participants'][$i]['cardsEarned'];
-                        $this - > warLog['warLog'][$x]['finalBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['battlesPlayed'];
-                        $this - > warLog['warLog'][$x]['finalBattleWins'][$i] = $warLog['items'][$x]['participants'][$i]['wins'];
-                        $this - > warLog['warLog'][$x]['collectionBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['collectionDayBattlesPlayed'];
+                        $this -> warLog['warLog'][$x]['name'][$i] = $warLog['items'][$x]['participants'][$i]['name'];
+                        $this -> warLog['warLog'][$x]['cardsEarned'][$i] = $warLog['items'][$x]['participants'][$i]['cardsEarned'];
+                        $this -> warLog['warLog'][$x]['finalBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['battlesPlayed'];
+                        $this -> warLog['warLog'][$x]['finalBattleWins'][$i] = $warLog['items'][$x]['participants'][$i]['wins'];
+                        $this -> warLog['warLog'][$x]['collectionBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['collectionDayBattlesPlayed'];
 
                     }
 
@@ -312,11 +312,11 @@ curl_close($ch);
                     for ($y = 0; $y < 5; $y++) {
                         //assign clan variables if clan tag matches our clan tag
                         if ($warLog['items'][$x]['standings'][$y]['clan']['tag'] == '#PQGLG8VC') {
-                            $this - > warLog['participants'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['participants'];
-                            $this - > warLog['battlesPlayed'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['battlesPlayed'];
-                            $this - > warLog['wins'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['wins'];
-                            $this - > warLog['crowns'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['crowns'];
-                            $this - > warLog['trophyChange'][$x] = $warLog['items'][$x]['standings'][$y]['trophyChange'];
+                            $this -> warLog['participants'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['participants'];
+                            $this -> warLog['battlesPlayed'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['battlesPlayed'];
+                            $this -> warLog['wins'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['wins'];
+                            $this -> warLog['crowns'][$x] = $warLog['items'][$x]['standings'][$y]['clan']['crowns'];
+                            $this -> warLog['trophyChange'][$x] = $warLog['items'][$x]['standings'][$y]['trophyChange'];
                         }
                     }
 
@@ -352,11 +352,12 @@ curl_close($ch);
 }
 
 
+
 public function getPlayerDetailsLength() {
     /*I am assigning the count of the playerDetails array to a variable so I won't have to
      * call the count function every time I use this value in a loop later
      */
-    $this - > playerDetailsLength = count($this - > playerDetails['name']);
+    $this -> playerDetailsLength = count($this -> playerDetails['name']);
 }
     
 }
