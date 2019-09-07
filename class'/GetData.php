@@ -1,7 +1,7 @@
 <?php
 class GetData {
 
-    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'lastSeen' => [], 'warCollectionBattles' => [], 'totalCollectionBattles' => [], 'warCardsEarned' => [], 'totalCardsEarned' => [], 'allocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'totalFinalBattlesMissed' => [], 'warFinalBattleWin' => [], 'finalBattleWinLoss' => []];
+    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'donateRequestRatio' =>[], 'lastSeen' => [], 'warCollectionBattles' => [], 'totalCollectionBattles' => [], 'warCardsEarned' => [], 'totalCardsEarned' => [], 'allocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'totalFinalBattlesMissed' => [], 'warFinalBattleWin' => [], 'finalBattleWinLoss' => []];
     
     protected $warLog = ['warLog' => [
         0 => [
