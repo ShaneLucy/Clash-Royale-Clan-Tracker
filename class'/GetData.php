@@ -1,13 +1,14 @@
 <?php
 class GetData {
 
-    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'donateRequestRatio' =>[], 'lastSeen' => [], 'warCollectionBattles' => [], 'totalCollectionBattles' => [], 'warCardsEarned' => [], 'totalCardsEarned' => [], 'allocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'totalFinalBattlesMissed' => [], 'warFinalBattleWin' => [], 'finalBattleWinLoss' => []];
+    protected $playerDetails = ['name' => [], 'role' => [], 'donations' => [], 'donationsReceived' => [], 'donateRequestRatio' =>[], 'lastSeen' => [], 'warCollectionBattles' => [], 'totalCollectionBattles' => [], 'warCardsEarned' => [], 'totalCardsEarned' => [], 'allocatedFinalBattles' => [], 'totalAllocatedFinalBattles' => [], 'numberOfFinalBattlesPlayed' => [], 'totalFinalBattlesPlayed' => [], 'totalFinalBattlesMissed' => [], 'warFinalBattleWin' => [], 'finalBattleWinLoss' => []];
     
     protected $warLog = ['warLog' => [
         0 => [
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -15,6 +16,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -22,6 +24,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -29,6 +32,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -36,6 +40,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -43,6 +48,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -50,6 +56,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -57,6 +64,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -64,6 +72,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ],
@@ -71,6 +80,7 @@ class GetData {
             'name' => [],
             'cardsEarned' => [],
             'finalBattlesPlayed' => [],
+            'allocatedFinalBattles' =>[],
             'finalBattleWins' => [],
             'collectionBattlesPlayed' => []
         ]
@@ -100,11 +110,8 @@ class GetData {
     protected $clanWarTrophies;
     protected $requiredTrophies;
     protected $donationsPerWeek;
-    //test
-    private $jwt = "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU5ZDQxOTEwLWQzMmYtNDUwYS1hYzgwLWE2NjJmYzVkMzRjZSIsImlhdCI6MTU1NzI1Mjc1Miwic3ViIjoiZGV2ZWxvcGVyLzg3ZTM0ODA3LTgxYTAtNDk4MS1kZjNlLWViZWQ5ZTU1MDM4MSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTguOTEuODEuNCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.GQ0lmY6OWRnXqgq5Z-D0kkM05FGTyAqB3lIMc6QzU7jrzf6fI40VJX-R-mh_sEqy2GL5HnuFGM1n0e7C1qCdwA";
-    //production
-    // private $jwt = 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjdkMjcxZGNlLWQxN2YtNGM4Yi05ZmFiLTdkOGQ1MDlhMDkxYSIsImlhdCI6MTU2MzQ1Nzg1NSwic3ViIjoiZGV2ZWxvcGVyLzg3ZTM0ODA3LTgxYTAtNDk4MS1kZjNlLWViZWQ5ZTU1MDM4MSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIyMDQuOTMuMTc0LjEzNiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.HY0FYAwqSkIYJ2wY_I79uEuz1dTHXqd-DtujtuRXvQal_sswjYOBNBHFlTuUV-ImRYvkMhyH61kPdVQYqqsgsQ';
     
+    private $jwt;
 
      public function getPlayerAndClanData() {
         //initialise and set curl opttions for request
@@ -300,6 +307,7 @@ class GetData {
                             $this->warLog['warLog'][$x]['name'][$i] = $warLog['items'][$x]['participants'][$i]['name'];
                             $this->warLog['warLog'][$x]['cardsEarned'][$i] = $warLog['items'][$x]['participants'][$i]['cardsEarned'];
                             $this->warLog['warLog'][$x]['finalBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['battlesPlayed'];
+                            $this->warLog['warLog'][$x]['allocatedFinalBattles'][$i] = $warLog['items'][$x]['participants'][$i]['numberOfBattles']; 
                             $this->warLog['warLog'][$x]['finalBattleWins'][$i] = $warLog['items'][$x]['participants'][$i]['wins'];
                             $this->warLog['warLog'][$x]['collectionBattlesPlayed'][$i] = $warLog['items'][$x]['participants'][$i]['collectionDayBattlesPlayed'];
                         }
