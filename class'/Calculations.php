@@ -613,11 +613,14 @@ class Calculations extends GetData {
                 }
             }
             if (array_key_exists($i, $this->playerDetails['totalFinalBattleWins'])) {
+                //if a player hasn't lost any battles set the ratio to their number of wins
                 if ($this->playerDetails['totalFinalBattleLosses'][$i] == 0) {
                     $this->playerDetails['finalBattleWinLoss'][$i] = $this->playerDetails['totalFinalBattleWins'][$i];
                 } else {
+                    //otherwise set the ratio to their wins divided by losses
                     if (array_key_exists($i, $this->playerDetails['totalFinalBattleWins'])) {
                         $this->playerDetails['finalBattleWinLoss'][$i] = $this->playerDetails['totalFinalBattleWins'][$i] / $this->playerDetails['totalFinalBattleLosses'][$i];
+                        //if totalfinalbattleWins or totalFinalBattleLosses hasn't been set set the players ratio to N/A
                     } else {
                         $this->playerDetails['finalBattleWinLoss'][$i] = "N/A";
                     }
