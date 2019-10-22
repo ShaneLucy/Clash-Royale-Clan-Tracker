@@ -6,9 +6,8 @@ class Calculations extends GetData {
         //loop through player array and check for members with >= 300 donations and rank of member
         for ($i = 0;$i < $this->playerDetailsLength;$i++) {
             if (($this->playerDetails['donations'][$i] >= 300) && ($this->playerDetails['role'][$i] == "member")) {
-                echo $this->playerDetails['name'][$i];
-            } else {
-            }
+                echo $this->playerDetails['name'][$i] . "<br>";
+            } 
         }
     }
     
@@ -17,7 +16,7 @@ class Calculations extends GetData {
         //loop through player array and check for elders with < 100 donations
         for ($i = 0;$i < $this->playerDetailsLength;$i++) {
             if (($this->playerDetails['donations'][$i] < 100) && ($this->playerDetails['role'][$i] == "elder")) {
-                echo $this->playerDetails['name'][$i] . " with " . $this->playerDetails['donations'][$i] . " donations " . " was " . (100 - $this->playerDetails['donations'][$i]) . " donations away from 100 <br>";
+                echo $this->playerDetails['name'][$i] . "<br>";
             }
         }
     }
@@ -48,9 +47,9 @@ class Calculations extends GetData {
     public function recruitment() {
         $placesAvailable = (50 - $this->playerDetailsLength);
         if ($placesAvailable == 1) {
-            echo " We have " . $placesAvailable . " place available";
+            return " We have " . $placesAvailable . " place available";
         } else if ($placesAvailable > 1) {
-            echo "We have " . $placesAvailable . " places available";
+            return "We have " . $placesAvailable . " places available";
         }
     }
     
@@ -58,33 +57,59 @@ class Calculations extends GetData {
     public function currentWarStatus() {
         switch ($this->warState) {
             case 'notInWar':
-                echo "We are currently not at war";
+                return "We are currently not at war";
             break;
             case 'collectionDay':
-                echo "We are gathering cards on $this->warState. Currently we have participated in $this->warTotalCollectionBattles battles with $this->warTotalCollectionWins victories. We will be moving to the next stage of war at $this->collectionEndTime";
+                return "War State:$this->warState &ensp; Collection Battles Played:$this->warTotalCollectionBattles &ensp; Victories:$this->warTotalCollectionWins &ensp; Collection Day Ends:$this->collectionEndTime";
             break;
             case 'warDay':
-                echo "We are now at the final stage of our war. We have $this->warParticipants members fighting for us today. We have a total of $this->warTotalFinalBattles battles used, currently we have $this->warTotalFinalWins victories and $this->warTotalFinalCrowns crowns. This war is ending at $this->warEndTime";
+                echo "War State:$this->warState &ensp; Members Participating:$this->warParticipants &ensp;  Final Battles Completed:$this->warTotalFinalBattles &ensp; Victories:$this->warTotalFinalWins &ensp; Crowns:$this->warTotalFinalCrowns &ensp; War End Time:$this->warEndTime";
             break;
         }
     }
     
     
+    public function warLogSummary() {
+    //assigning overall clan war results to an array for each war
+    $warLogSummary[0] = "Created on:" . $this->warLog['createdOn'][0] . "&ensp; Total Participants:" . $this->warLog['participants'][0] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][0] . " &ensp; Total Wins:" . $this->warLog['wins'][0] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][0] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][0];
+    
+    $warLogSummary[1] = "Created on:" . $this->warLog['createdOn'][1] . "&ensp; Total Participants:" . $this->warLog['participants'][1] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][1]. " &ensp; Total Wins:" . $this->warLog['wins'][1] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][1] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][1];
+    
+    $warLogSummary[2] = "Created on:" . $this->warLog['createdOn'][2] . "&ensp; Total Participants:" . $this->warLog['participants'][2] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][2] . " &ensp; Total Wins:" . $this->warLog['wins'][2] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][2] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][2];
+    
+    $warLogSummary[3] = "Created on:" . $this->warLog['createdOn'][3] . "&ensp; Total Participants:" . $this->warLog['participants'][3] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][3] . " &ensp; Total Wins:" . $this->warLog['wins'][3] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][3] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][3];
+    
+    $warLogSummary[4] = "Created on:" . $this->warLog['createdOn'][4] . "&ensp; Total Participants:" . $this->warLog['participants'][4] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][4] . " &ensp; Total Wins:" . $this->warLog['wins'][4] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][4] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][4];
+    
+    $warLogSummary[5] = "Created on:" . $this->warLog['createdOn'][5] . "&ensp; Total Participants:" . $this->warLog['participants'][5] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][5] . " &ensp; Total Wins:" . $this->warLog['wins'][5] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][5] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][5];
+    
+    $warLogSummary[6] = "Created on:" . $this->warLog['createdOn'][6] . "&ensp; Total Participants:" . $this->warLog['participants'][6] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][6] . " &ensp; Total Wins:" . $this->warLog['wins'][6] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][6] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][6];
+    
+    $warLogSummary[7] = "Created on:" . $this->warLog['createdOn'][7] . "&ensp; Total Participants:" . $this->warLog['participants'][7] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][7] . " &ensp; Total Wins:" . $this->warLog['wins'][7] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][7] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][7];
+    
+    $warLogSummary[8] = "Created on:" . $this->warLog['createdOn'][8] . "&ensp; Total Participants:" . $this->warLog['participants'][8] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][8] . " &ensp; Total Wins:" . $this->warLog['wins'][8] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][8] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][8];
+    
+    $warLogSummary[9] = "Created on:" . $this->warLog['createdOn'][9] . "&ensp; Total Participants:" . $this->warLog['participants'][9] . "&ensp; Total Battles Played:" . $this->warLog['battlesPlayed'][9] . " &ensp; Total Wins:" . $this->warLog['wins'][9] . "&ensp; Total Crowns Won:" . $this->warLog['crowns'][9] . "&ensp; Trophy Change:" . $this->warLog['trophyChange'][9];
+    
+    return $warLogSummary;
+    }
+    
+    
     public function warLog0() {
-        echo "<HR>";
-        //getting overall clan war results
-        echo "Created on: " . $this->warLog['createdOn'][0] . " Total Participants: " . $this->warLog['participants'][0] . " Total Battles Played: " . $this->warLog['battlesPlayed'][0] . " Total Wins: " . $this->warLog['wins'][0] . " Total Crowns Won: " . $this->warLog['crowns'][0] . " Trophy Change: " . $this->warLog['trophyChange'][0] . "<br>";
-        echo "<table>
-   <tr>
-   <th>Name</th>
-   <th>Collection Battles Played</th>
-   <th>Cards Earned</th>
-   <th>Final Battles Played</th>
-   <th>Final Battle Result</th>
-   </tr>";
         //getting individual player results
         for ($x = 0;$x < $this->warLog0Length;$x++) {
-            echo "<tr>
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][0]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][0]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][0]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][0]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][0]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
    <td>" . $this->warLog['warLog'][0]['name'][$x] . "</td>
    <td>" . $this->warLog['warLog'][0]['collectionBattlesPlayed'][$x] . "</td>
    <td>" . $this->warLog['warLog'][0]['cardsEarned'][$x] . "</td>
@@ -92,8 +117,244 @@ class Calculations extends GetData {
    <td>" . $this->warLog['warLog'][0]['finalBattleWins'][$x] . "</td>
    </tr>";
         }
+        }    
     }
     
+    
+    
+    public function warLog1() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog1Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][1]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][1]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][1]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    public function warLog2() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog2Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][2]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][2]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][2]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    public function warLog3() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog3Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][3]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][3]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][3]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    public function warLog4() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog4Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][4]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][4]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][4]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    public function warLog5() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog5Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][5]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][5]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][5]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    public function warLog6() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog6Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][6]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][6]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][6]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    public function warLog7() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog0Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][7]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][7]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][7]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    
+    public function warLog8() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog8Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][8]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][8]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][8]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
+    
+    
+    
+    public function warLog9() {
+        //getting individual player results
+        for ($x = 0;$x < $this->warLog9Length;$x++) {
+        //if $x is odd the row will have a white background
+        if(($x % 2) == 1) {
+            echo  "<tr>
+   <td>" . $this->warLog['warLog'][9]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        //if $x is even the row will have a dark background
+        } else {
+           echo  "<tr class='dark'>
+   <td>" . $this->warLog['warLog'][9]['name'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['collectionBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['cardsEarned'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['finalBattlesPlayed'][$x] . "</td>
+   <td>" . $this->warLog['warLog'][9]['finalBattleWins'][$x] . "</td>
+   </tr>";
+        }
+        }    
+    }
     
     public function totalCardsEarned() {
         //loop over this code for every player in the clan
