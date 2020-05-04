@@ -1,0 +1,23 @@
+.dark {
+background-color:#F0F0F0;
+}
+
+#particles-js {
+width:100vw;
+height:100vh;
+background-color:#6b0a0a;
+background-repeat:no-repeat;
+background-size:cover;
+background-position:50% 50%;
+margin-top:-10vh;
+overflow:hidden;
+}
+
+h1 {
+color:lightgray;
+text-align:center;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
