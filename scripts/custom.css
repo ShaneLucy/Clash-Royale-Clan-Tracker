@@ -1,11 +1,20 @@
-.dark {
-background-color:#F0F0F0;
+body {
+    background-color: #ffffff;
 }
+
+.dark {
+background-color:#ebebeb;
+}
+
+.secondary {
+    background-color: #f5f5f0;
+}
+
 
 #particles-js {
 width:100vw;
 height:100vh;
-background-color:#6b0a0a;
+background-color:#AA0E13;
 background-repeat:no-repeat;
 background-size:cover;
 background-position:50% 50%;
@@ -20,4 +29,17 @@ position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th:hover, td:hover {
+    background-color: #2BF377;
+}
+
+tr:hover {
+    background-color: #8bf8b5;
 }
