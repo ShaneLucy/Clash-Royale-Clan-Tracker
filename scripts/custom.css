@@ -51,7 +51,7 @@ td:hover {
 }
 
 tr:hover, table tr:nth-child(even):hover {
-    background-color: #8bf8b5;
+    background-color: #c8c8c8;
 }
 
 .sticky {
